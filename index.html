@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎉 Invitación de Cumple de Martincito</title>
+  <meta name="description" content="Estás invitad@ al cumple de Martincito. ¡Confirma asistencia y mira la ubicación!" />
+  <meta property="og:title" content="🎉 Cumple de Martincito" />
+  <meta property="og:description" content="Sábado 13 de Septiembre, 2025 · Zona Codavisa, Calle Canadá. ¡Haz clic para venir!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1200&auto=format&fit=crop" />
+  <meta name="theme-color" content="#6C5CE7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#111827; --bg2:#0b1020; --grad1:#6C5CE7; --grad2:#A78BFA; --text:#E5E7EB; --muted:#9CA3AF; --card:#0b1229aa; --accent:#22D3EE;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, #1f2b5a 0%, transparent 60%),
+                  radial-gradient(1000px 700px at 110% 10%, #2d175a 0%, transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+    .container{max-width:960px;margin:0 auto;padding:24px}
+    header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:36px;text-align:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--grad1),var(--grad2));color:#fff;padding:8px 14px;border-radius:999px;font-weight:700;letter-spacing:.4px;box-shadow:0 8px 30px #0008}
+    h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:10px 0 6px 0}
+    .subtitle{color:var(--muted);font-size:clamp(14px,2.2vw,18px)}
+
+    .card{
+      margin:28px auto 0; backdrop-filter: blur(10px); background:var(--card); border:1px solid #ffffff1a; border-radius:24px; padding:26px; box-shadow:0 20px 60px #0008; max-width:780px
+    }
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .info{background:#0e1533; border:1px solid #ffffff14; border-radius:18px; padding:16px}
+    .info h3{margin:0 0 6px 0;font-size:16px;color:#c7d2fe}
+    .info p{margin:0;color:#d1d5db}
+
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{
+      appearance:none;border:none;cursor:pointer; text-decoration:none; font-weight:700; letter-spacing:.3px; padding:14px 18px; border-radius:14px; transition:transform .08s ease, box-shadow .3s ease, background .3s ease; display:inline-flex; align-items:center; gap:10px
+    }
+    .btn-primary{background:linear-gradient(90deg,var(--grad1),var(--grad2));color:white;box-shadow:0 10px 30px #0007}
+    .btn-outline{background:#111827;color:#e5e7eb;border:1px solid #ffffff26}
+    .btn:hover{transform:translateY(-2px)}
+
+    .note{margin-top:22px;color:#cbd5e1}
+    footer{margin:36px 0 24px 0;text-align:center;color:#94a3b8;font-size:14px}
+
+    /* confetti */
+    .confetti{position:fixed;inset:0;pointer-events:none;}
+  </style>
+</head>
+<body>
+  <canvas class="confetti" id="confetti"></canvas>
+  <div class="container">
+    <header>
+      <span class="badge">🎉 ¡Estás invitad@!</span>
+      <h1>Cumple de <span style="background:linear-gradient(90deg,var(--accent),#a5b4fc);-webkit-background-clip:text;background-clip:text;color:transparent">Martincito</span></h1>
+      <p class="subtitle">Será una tarde para recordar. ¡Trae ganas de bailar y buena vibra! ✨</p>
+    </header>
+
+    <section class="card">
+      <div class="grid">
+        <div class="info">
+          <h3>📅 Fecha & Hora</h3>
+          <p><strong>Sábado 13 de Septiembre, 2025</strong> · <strong>17:00</strong></p>
+        </div>
+        <div class="info">
+          <h3>📍 Ubicación</h3>
+          <p><strong>Zona Codavisa</strong><br/>Calle Canadá</p>
+        </div>
+        <div class="info">
+          <h3>🎁 Dress code / Nota</h3>
+          <p>Traer traguito 🍹</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn btn-primary" id="mapBtn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Zona+Codavisa+Calle+Canada">📍 Ver ubicación</a>
+        <a class="btn btn-outline" id="rsvpBtn" target="_blank" rel="noopener" href="https://wa.me/59175254197?text=Confirmo%20asistencia%20%F0%9F%98%8E%20nos%20vemos%20para%20romperla%20%F0%9F%8E%8A%20%E2%80%94%20Soy%20_____">✅ Confirmar por WhatsApp</a>
+      </div>
+
+      <p class="note">Si puedes, confirma tu asistencia antes del <strong>6 de Septiembre</strong> para organizar mejor 🙌</p>
+    </section>
+
+    <section class="card" id="info-extra" style="margin-top:24px">
+      <h3>🚍 Cómo llegar</h3>
+      <p>Además de Google Maps, puedes venir en minibuses:</p>
+      <ul>
+        <li><strong>Línea 343</strong>: su ruta baja desde la ciudad por la Av. Manco Kapac y continúa por la calle Eguino hasta Illampu.</li>
+        <li><strong>Línea 978</strong>: circula por la calle Eguino y luego desciende hacia el Prado.</li>
+      </ul>
+    </section>
+
+    <footer>
+      Hecho con cariño · <span id="year"></span>
+    </footer>
+  </div>
+
+  <script>
+    // Año actual
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mini confetti
+    const c = document.getElementById('confetti');
+    const ctx = c.getContext('2d');
+    const pieces = [];
+    const colors = ['#22D3EE','#A78BFA','#F472B6','#F59E0B','#34D399'];
+    function resize(){ c.width = innerWidth; c.height = innerHeight }
+    addEventListener('resize', resize); resize();
+    for(let i=0;i<140;i++){
+      pieces.push({
+        x: Math.random()*c.width,
+        y: Math.random()*-c.height,
+        s: 5+Math.random()*8,
+        r: Math.random()*Math.PI,
+        v: 1+Math.random()*3,
+        color: colors[Math.floor(Math.random()*colors.length)]
+      });
+    }
+    function draw(){
+      ctx.clearRect(0,0,c.width,c.height);
+      pieces.forEach(p=>{
+        p.y += p.v; p.r += 0.03; if(p.y>c.height+20){ p.y=-20; p.x=Math.random()*c.width }
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+        ctx.fillStyle=p.color; ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s);
+        ctx.restore();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
